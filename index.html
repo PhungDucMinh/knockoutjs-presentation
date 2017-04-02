@@ -27,11 +27,13 @@
 
         // This is a simple *viewmodel* - JavaScript that defines the data and behavior of your UI
         function AppViewModel() {
-            this.firstName =  ko.observable(person.firstName);
-            this.lastName = ko.observable(person.lastName);
-            this.fullName = ko.computed(function() {
-                return this.firstName() + " " + this.lastName();
-            }, this);
+            var self = this;
+
+            self.firstName =  ko.observable(person.firstName);
+            self.lastName = ko.observable(person.lastName);
+            self.fullName = ko.computed(function() {
+                return self.firstName() + " " + self.lastName();
+            });
         }
         
         var myAppViewModel = new AppViewModel();
