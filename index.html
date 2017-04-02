@@ -1,14 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Knockout Introduction | Minh Phung</title>
 </head>
+
 <body>
-    
-    
-    <script src="bower_components/knockout/dist/knockout.js" ></script>
+
+    <p>First name: <strong data-bind="text: firstName"></strong></p>
+    <p>Last name: <strong data-bind="text: lastName"></strong></p>
+    First name: <input type="text" data-bind="value: firstName"/>
+    Last name: <input type="text" data-bind="value: lastName"/>
+
+
+    <script src="bower_components/knockout/dist/knockout.js"></script>
+    <script>
+        // this is a simple *model*
+        var person = {
+            firstName: 'Minh',
+            lastName: 'Phung'
+        }
+
+        // This is a simple *viewmodel* - JavaScript that defines the data and behavior of your UI
+        function AppViewModel() {
+            this.firstName = person.firstName;
+            this.lastName = person.lastName;
+        }
+        
+        var myAppViewModel = new AppViewModel();
+
+        // Activates knockout.js
+        ko.applyBindings(myAppViewModel);
+    </script>
 </body>
+
 </html>
