@@ -24,15 +24,19 @@
             </tr>
         </thead>
         <!-- Todo: Generate table body -->
-        <tbody data-bind="foreach: seats">
-            <th data-bind="text: name"></th>
-            <th data-bind="text: meal().mealName"></th>
-            <th data-bind="text: meal().price"></th>
-        </tbody>
+        <tbody data-bind="template: {name: 'rowTemplate', foreach: seats}" />
     </table>
 
     <button data-bind="click: addSeat">Reserve another seat</button>
     <!--<button data-bind="click: addSeat, enable: seats().length < 5">Reserve another seat</button>-->
+
+    <script type="text/html" id="rowTemplate">
+        <tr>
+            <th data-bind="text: name"></th>
+            <th data-bind="text: meal().mealName"></th>
+            <th data-bind="text: meal().price"></th>
+        </tr>
+    </script>
 
     <script src="bower_components/knockout/dist/knockout.js"></script>
     <script>
