@@ -15,19 +15,23 @@
     First name: <input type="text" data-bind="value: firstName"/>
     Last name: <input type="text" data-bind="value: lastName"/>
 
+    <p> Full name: <strong data-bind="text: fullName"></strong></p>
 
     <script src="bower_components/knockout/dist/knockout.js"></script>
     <script>
         // this is a simple *model*
         var person = {
-            firstName: 'Minh',
+            firstName:'Minh',
             lastName: 'Phung'
         }
 
         // This is a simple *viewmodel* - JavaScript that defines the data and behavior of your UI
         function AppViewModel() {
-            this.firstName = person.firstName;
-            this.lastName = person.lastName;
+            this.firstName =  ko.observable(person.firstName);
+            this.lastName = ko.observable(person.lastName);
+            this.fullName = ko.computed(function() {
+                return this.firstName() + " " + this.lastName();
+            }, this);
         }
         
         var myAppViewModel = new AppViewModel();
