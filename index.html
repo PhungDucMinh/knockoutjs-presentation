@@ -24,8 +24,15 @@
             </tr>
         </thead>
         <!-- Todo: Generate table body -->
-        <tbody></tbody>
+        <tbody data-bind="foreach: seats">
+            <th data-bind="text: name"></th>
+            <th data-bind="text: meal().mealName"></th>
+            <th data-bind="text: meal().price"></th>
+        </tbody>
     </table>
+
+    <button data-bind="click: addSeat">Reserve another seat</button>
+    <!--<button data-bind="click: addSeat, enable: seats().length < 5">Reserve another seat</button>-->
 
     <script src="bower_components/knockout/dist/knockout.js"></script>
     <script>
@@ -47,13 +54,19 @@
         function ReservationsViewModel() {
             var self = this;
 
-            self.availableMeals = availableMeals;
-
             // Editable data
             self.seats = ko.observableArray([
-                new SeatReservation("Steve", self.availableMeals[0]),
-                new SeatReservation("Bert", self.availableMeals[0])
+                new SeatReservation("Steve", availableMeals[0]),
+                new SeatReservation("Bert", availableMeals[0])
             ]);
+
+
+            // Operations
+            self.addSeat = function () {
+                // is self.seats is native Javascript object ??
+                self.seats.push(new SeatReservation("Second " + (new Date()).getSeconds(), availableMeals[0]));
+                // NO. It is KO observableArray object
+            }
         }
 
         ko.applyBindings(new ReservationsViewModel());
