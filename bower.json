@@ -1,0 +1,18 @@
+{
+  "name": "knockout-presentation",
+  "homepage": "https://github.com/PhungDucMinh/knockoutjs-presentation",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "highcharts": "^5.0.10",
+    "knockout": "^3.4.2"
+  }
+}
